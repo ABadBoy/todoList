@@ -1,0 +1,38 @@
+
+<!-- <div>
+  <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)" >
+    <input name="username" [(ngModel)]="username" #usernameRef="ngModel" required minlength="3" type="text"/>
+    <div *ngIf="usernameRef.errors?.['required']">this is required</div>
+    <div *ngIf="usernameRef.errors?.['minlength']">should be at least 3 charactors</div>
+
+    <input name="password" required [(ngModel)]="password" #passwordRef="ngModel" type="password">
+    <div *ngIf="passwordRef.errors?.['required']">this is required</div>
+    <button type="submit">Login</button>
+  </form>
+
+</div> -->
+
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="loginForm"  (submit)="login()">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username" formControlName="name" type="text">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" formControlName="password" type="password">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <button mat-stroked-button color="accent" class="btn-block"  [disabled]="loginForm.invalid">Login</button>
+    </form>
+  </mat-card>
+
+</div>

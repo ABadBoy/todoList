@@ -1,0 +1,31 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="form"  (submit)="register()">
+
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input  formControlName="name" matInput placeholder="Username">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input formControlName="email" matInput placeholder="Email">
+          <mat-error>Invalid email address.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input formControlName="password" matInput placeholder="Password" type="password">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" class="btn-block"  [disabled]="form.invalid">Register</button>
+
+    </form>
+  </mat-card>
+</div>

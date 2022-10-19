@@ -1,0 +1,45 @@
+<mat-toolbar>
+  <span>New Todo</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form [formGroup]="form" class="normal-form"  (submit)="onSubmit()">
+  <mat-grid-list cols="1" rowHeight="fit" style="height: 400px">
+    <mat-grid-tile>
+      <div class="controls-container">
+        <mat-form-field>
+          <mat-label>Choose a date</mat-label>
+          <input  formControlName="todoDay" matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button mat-button mat-raise-button  (click)="addDescription();">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button mat-button mat-raise-button  (click)="removeDescription();">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+    </mat-grid-tile>
+      <div formArrayName="todoRecordItems" style="text-align: left !important;">
+        <div *ngFor="let emp of todoRecordItems.controls; index as i">
+          <mat-grid-tile >
+          <mat-form-field >
+              <input [formControlName]="i" matInput placeholder="description">
+              <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        </div>
+
+      </div>
+
+    <mat-grid-tile>
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+        <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</form>
